@@ -9,16 +9,16 @@
 <svg class="hand" viewBox="0 0 400 440" role="img" aria-label="Hand with four natural-looking fingers and a separate thumb. Tap nails to paint.">
 <defs>
 <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffdfcf"/><stop offset="1" stop-color="#edb5a3"/></linearGradient>
-<clipPath id="nailclip"><path d="M -15 -15 C -16 -33 16 -33 15 -15 L 15 11 Q 0 17 -15 11 Z"/></clipPath>
+<clipPath id="nailclip"><path d="M -15 -19 Q -15 -27 -7 -27 L 7 -27 Q 15 -27 15 -19 L 15 3 C 15 19 -15 19 -15 3 Z"/></clipPath>
 </defs>
 <path d="M 143 415 C 117 399 105 371 104 340 L 101 315 C 96 304 86 296 71 282 L 53 264 C 39 249 44 230 57 224 C 71 216 85 222 99 236 L 129 269 L 126 149 C 124 124 131 111 146 111 C 163 111 169 124 170 145 L 172 236 L 172 97 C 172 74 179 65 193 65 C 208 65 214 77 214 97 L 214 229 L 216 67 C 216 43 226 34 240 34 C 255 34 264 45 263 68 L 259 232 L 265 107 C 266 86 277 76 290 80 C 308 84 314 100 310 119 L 289 281 C 283 335 263 378 233 408 C 204 436 170 432 143 415 Z" fill="url(#skin)" stroke="#d99d8c" stroke-width="2.2"/>
 <path d="M 170 145 L 172 236 M 214 97 L 214 229 M 263 68 L 259 232" fill="none" stroke="#ce988e" stroke-width="1" opacity=".45"/>
 <g id="nails">
-<g transform="translate(148 150)"><path class="nail selected" data-nail="0" d="M -15 -15 C -16 -33 16 -33 15 -15 L 15 11 Q 0 17 -15 11 Z" fill="#f6c4d9"/></g>
-<g transform="translate(193 104)"><path class="nail" data-nail="1" d="M -15 -15 C -16 -33 16 -33 15 -15 L 15 11 Q 0 17 -15 11 Z" fill="#f6c4d9"/></g>
-<g transform="translate(240 71)"><path class="nail" data-nail="2" d="M -15 -15 C -16 -33 16 -33 15 -15 L 15 11 Q 0 17 -15 11 Z" fill="#f6c4d9"/></g>
-<g transform="translate(285 119) rotate(8)"><path class="nail" data-nail="3" d="M -15 -15 C -16 -33 16 -33 15 -15 L 15 11 Q 0 17 -15 11 Z" fill="#f6c4d9"/></g>
-<g transform="translate(83 266) rotate(-46)"><path class="nail" data-nail="4" d="M -15 -15 C -16 -33 16 -33 15 -15 L 15 11 Q 0 17 -15 11 Z" fill="#f6c4d9"/></g>
+<g transform="translate(148 150)"><path class="nail selected" data-nail="0" d="M -15 -19 Q -15 -27 -7 -27 L 7 -27 Q 15 -27 15 -19 L 15 3 C 15 19 -15 19 -15 3 Z" fill="#f6c4d9"/></g>
+<g transform="translate(193 104)"><path class="nail" data-nail="1" d="M -15 -19 Q -15 -27 -7 -27 L 7 -27 Q 15 -27 15 -19 L 15 3 C 15 19 -15 19 -15 3 Z" fill="#f6c4d9"/></g>
+<g transform="translate(240 71)"><path class="nail" data-nail="2" d="M -15 -19 Q -15 -27 -7 -27 L 7 -27 Q 15 -27 15 -19 L 15 3 C 15 19 -15 19 -15 3 Z" fill="#f6c4d9"/></g>
+<g transform="translate(285 119) rotate(8)"><path class="nail" data-nail="3" d="M -15 -19 Q -15 -27 -7 -27 L 7 -27 Q 15 -27 15 -19 L 15 3 C 15 19 -15 19 -15 3 Z" fill="#f6c4d9"/></g>
+<g transform="translate(83 266) rotate(-46)"><path class="nail" data-nail="4" d="M -15 -19 Q -15 -27 -7 -27 L 7 -27 Q 15 -27 15 -19 L 15 3 C 15 19 -15 19 -15 3 Z" fill="#f6c4d9"/></g>
 </g>
 <g id="decorations" pointer-events="none"></g>
 </svg></div><p class="hand-hint">Tap a nail to paint it ✨ The thumb is on the side!</p></section>
@@ -36,8 +36,8 @@ const svgNS='http://www.w3.org/2000/svg';
 function render(){
   nails.forEach((n,i)=>{
     const d=designs[i];
-    // A French manicure has a soft nude nail bed and the chosen shade on the outer fingertip.
-    n.setAttribute('fill',d.pattern==='french'?'#f9dbe2':d.color);
+    // The selected polish colors the nail bed; French tips add a white free edge.
+    n.setAttribute('fill',d.color);
     n.setAttribute('aria-label',(i===4?'Thumb':'Nail '+(i+1))+', '+d.pattern+' '+d.color);
   });
   decor.replaceChildren();
@@ -54,8 +54,8 @@ function render(){
       return el;
     };
     if(d.pattern==='french'){
-      // The colored tip sits at the free edge (TOP), never near the cuticle.
-      add('path',{d:'M -20 -39 H 20 V -17 Q 0 -8 -20 -17 Z',fill:d.color});
+      // Local negative Y points toward the fingertip, including on the rotated thumb.
+      add('path',{d:'M -20 -39 H 20 V -20 Q 0 -12 -20 -20 Z',fill:'#fffafc'});
     }else if(d.pattern==='glitter'){
       [[-7,-19],[4,-14],[-4,-4],[7,3],[0,9]].forEach(([x,y])=>add('path',{d:'M '+x+' '+(y-3)+' l 3 3 l -3 3 l -3 -3 Z',fill:'#fff9dc',opacity:'.95'}));
     }else if(d.pattern==='dots'){
