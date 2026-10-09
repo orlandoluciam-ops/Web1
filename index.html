@@ -1,126 +1,45 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#fff0f6">
-<title>Your Nail Salon — Polish Party</title>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#fff0f6"><title>Your Nail Salon — Polish Party</title>
 <style>
-:root{--ink:#512b45;--pink:#f5a8ca;--deep:#d65f9b;--cream:#fffaf7;--line:#f0d5e3;--mint:#c8f0df}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;color:var(--ink);font-family:ui-rounded,"Trebuchet MS",system-ui,sans-serif;background:radial-gradient(ellipse at top left,#ffe0ee,transparent 38%),radial-gradient(ellipse at bottom right,#e7e0ff,transparent 35%),#fff8fb}button{font:inherit;cursor:pointer}.app{max-width:1160px;margin:auto;padding:22px 16px 38px}header{text-align:center;margin:4px 0 20px}.eyebrow{font-size:.76rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:#c05d92}h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1;margin:9px 0;color:#7b3d65}h1 span{color:#e477ac}header p{margin:10px 0;color:#8c6580}.salon-stats{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:14px}.stat{background:#fff;border:1px solid #f3dce7;border-radius:99px;padding:7px 12px;font-size:.82rem;font-weight:800}.layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr);gap:18px;align-items:stretch}.panel{background:#ffffffdf;border:1px solid white;border-radius:25px;box-shadow:0 12px 38px #b85b8520;padding:18px}.stage{display:flex;flex-direction:column;min-height:570px}.stage-top{display:flex;justify-content:space-between;align-items:center;gap:10px}.stage-top h2,.controls h2{font-size:1.04rem;margin:0}.pill{border-radius:99px;background:#fff0f6;padding:7px 11px;font-size:.78rem;color:#a24c7b;font-weight:800}.customer-card{display:flex;align-items:center;gap:13px;background:linear-gradient(110deg,#fff0f7,#f5f0ff);border:1px solid #f4dce9;border-radius:20px;padding:12px;margin:16px 0 6px}.avatar{width:62px;height:62px;flex:0 0 62px;border-radius:19px;background:#ffe0eb;display:grid;place-items:center;font-size:2.35rem}.customer-info{min-width:0;flex:1}.customer-info h3{margin:0 0 3px;font-size:1rem}.customer-info p{margin:0;color:#8b6680;font-size:.85rem;line-height:1.35}.request{font-size:.78rem;font-weight:800;color:#9d4e7a;margin-top:5px}.hand-area{flex:1;display:grid;place-items:center;overflow:hidden;min-height:310px;position:relative}.sparkle{position:absolute;color:#ed9bc1;font-size:23px;user-select:none}.s1{left:9%;top:20%}.s2{right:10%;top:34%;font-size:19px}.s3{left:18%;bottom:15%;font-size:18px}.s4{right:17%;bottom:17%}.hand{width:min(100%,410px);height:auto;filter:drop-shadow(0 13px 10px #a65b6a18)}.nail{stroke:#c47a8b;stroke-width:2;cursor:pointer;transition:filter .15s,stroke-width .15s}.nail:hover{filter:brightness(1.07);stroke-width:3}.nail.selected{stroke:#7a315f;stroke-width:4}.hand-hint{font-size:.8rem;text-align:center;color:#a07893;margin:0 0 3px}.controls{display:flex;flex-direction:column;gap:17px}.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;gap:8px}.section-head small{color:#a27b94}.swatches{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:9px}.swatch{aspect-ratio:1;border-radius:50%;border:3px solid white;box-shadow:0 2px 7px #78425b25;position:relative;min-width:0}.swatch[aria-pressed="true"]{outline:3px solid #b75d8b;outline-offset:2px}.swatch[aria-pressed="true"]::after{content:"✓";position:absolute;inset:0;display:grid;place-items:center;color:white;font-weight:900;text-shadow:0 1px 4px #555}.options{display:flex;flex-wrap:wrap;gap:8px}.option{border:1px solid #efd2e1;border-radius:13px;background:#fff8fc;color:#87516f;padding:9px 11px;font-size:.85rem;font-weight:750}.option[aria-pressed="true"]{background:#ffe0ee;border-color:#df80ae;color:#8a315f}.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.primary,.secondary{border:0;border-radius:14px;padding:12px 10px;font-weight:850}.primary{background:linear-gradient(135deg,#ed91bb,#d66da7);color:white;box-shadow:0 5px 13px #d66da733}.secondary{background:#fff0f6;color:#a24c7b;border:1px solid #f4d7e5}.primary:disabled{opacity:.45;cursor:not-allowed}.status{min-height:1.2em;text-align:center;font-size:.82rem;color:#a24c7b;margin:0}.finish-note{font-size:.8rem;color:#8d6c82;text-align:center;margin:0}.salon-footer{text-align:center;font-size:.8rem;color:#a27b94;margin:18px 0 0}.section-label{font-size:.76rem;color:#a07893;font-weight:850;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}.new-customer{width:100%}
-@media(max-width:760px){.layout{grid-template-columns:1fr}.stage{min-height:500px}.hand-area{min-height:290px}.controls{gap:16px}.app{padding:17px 11px 25px}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
-</style>
-</head>
-<body>
-<main class="app">
-<header>
-<div class="eyebrow">✦ Open for fabulous manicures ✦</div>
-<h1>Your Nail <span>Salon</span> 💅</h1>
-<p>Welcome your customers, follow their inspo, and give them a manicure they'll love!</p>
-<div class="salon-stats"><span class="stat">💖 Happy customers: <b id="happy-count">0</b></span><span class="stat">⭐ Salon stars: <b id="star-count">0</b></span><span class="stat">🪑 <b id="queue-count">3</b> customers waiting</span></div>
-</header>
-<div class="layout">
-<section class="panel stage" aria-label="Customer and nail painting canvas">
-<div class="stage-top"><h2>💗 At your nail table</h2><span class="pill" id="selected-label">Nail 1 selected</span></div>
-<div class="customer-card">
-<div class="avatar" id="customer-avatar" aria-hidden="true">👩🏻</div>
-<div class="customer-info"><h3 id="customer-name">Mia is here!</h3><p id="customer-dialogue">Hi! Can you make my nails extra cute?</p><div class="request" id="customer-request">Her inspo: pink French tips</div></div>
-</div>
-<div class="hand-area">
-<span class="sparkle s1">✦</span><span class="sparkle s2">✧</span><span class="sparkle s3">✦</span><span class="sparkle s4">♡</span>
-<svg class="hand" viewBox="0 0 400 420" role="img" aria-label="Hand with four fingers and a thumb, with five clickable nails">
-<defs>
-<linearGradient id="skin" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffdfcf"/><stop offset="1" stop-color="#edb5a3"/></linearGradient>
-<clipPath id="clip-pinky"><path d="M110 124 Q107 108 121 105 Q136 104 139 120 L143 146 Q130 155 116 148Z"/></clipPath>
-<clipPath id="clip-ring"><path d="M157 83 Q157 66 173 65 Q188 66 188 84 L188 108 Q173 117 159 107Z"/></clipPath>
-<clipPath id="clip-middle"><path d="M207 63 Q208 45 224 45 Q240 46 239 64 L237 91 Q222 100 207 90Z"/></clipPath>
-<clipPath id="clip-index"><path d="M258 91 Q260 74 276 76 Q291 79 287 96 L282 121 Q267 128 254 117Z"/></clipPath>
-<clipPath id="clip-thumb"><path d="M103 242 Q91 229 79 239 Q67 250 79 264 L98 285 Q111 290 120 278Z"/></clipPath>
-</defs>
-<!-- Palm, four fingers and an unmistakable side thumb -->
-<path fill="url(#skin)" stroke="#d99d8c" stroke-width="2" d="M116 355 C99 336 94 306 95 279 L82 258 Q69 244 80 232 Q91 220 105 232 L126 251 L119 126 Q117 107 130 105 Q145 104 148 123 L158 239 L157 85 Q157 65 173 65 Q189 65 189 85 L191 231 L207 65 Q208 45 224 45 Q241 46 240 66 L235 239 L258 94 Q261 75 276 77 Q292 80 288 98 L265 263 C261 302 247 336 222 357 C195 379 143 377 116 355Z"/>
-<path fill="none" stroke="#d99d8c" stroke-width="1.5" opacity=".55" d="M116 355 C99 336 94 306 95 279 L82 258 Q69 244 80 232 Q91 220 105 232 L126 251 L119 126 M148 123 L158 239 M189 85 L191 231 M240 66 L235 239 M288 98 L265 263"/>
+:root{--ink:#512b45;--deep:#d65f9b}*{box-sizing:border-box}body{margin:0;color:var(--ink);font-family:ui-rounded,"Trebuchet MS",system-ui,sans-serif;background:radial-gradient(ellipse at top left,#ffe0ee,transparent 38%),radial-gradient(ellipse at bottom right,#e7e0ff,transparent 35%),#fff8fb}button{font:inherit;cursor:pointer}.app{max-width:1160px;margin:auto;padding:22px 16px 38px}header{text-align:center;margin:4px 0 20px}.eyebrow{font-size:.76rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:#c05d92}h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1;margin:9px 0;color:#7b3d65}h1 span{color:#e477ac}header p{margin:10px 0;color:#8c6580}.salon-stats{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:14px}.stat{background:#fff;border:1px solid #f3dce7;border-radius:99px;padding:7px 12px;font-size:.82rem;font-weight:800}.layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr);gap:18px}.panel{background:#ffffffdf;border:1px solid white;border-radius:25px;box-shadow:0 12px 38px #b85b8520;padding:18px}.stage{display:flex;flex-direction:column;min-height:570px}.stage-top{display:flex;justify-content:space-between;align-items:center;gap:10px}.stage-top h2,.controls h2{font-size:1.04rem;margin:0}.pill{border-radius:99px;background:#fff0f6;padding:7px 11px;font-size:.78rem;color:#a24c7b;font-weight:800}.customer-card{display:flex;align-items:center;gap:13px;background:linear-gradient(110deg,#fff0f7,#f5f0ff);border:1px solid #f4dce9;border-radius:20px;padding:12px;margin:16px 0 6px}.avatar{width:62px;height:62px;flex:0 0 62px;border-radius:19px;background:#ffe0eb;display:grid;place-items:center;font-size:2.35rem}.customer-info{min-width:0;flex:1}.customer-info h3{margin:0 0 3px}.customer-info p{margin:0;color:#8b6680;font-size:.85rem;line-height:1.35}.request{font-size:.78rem;font-weight:800;color:#9d4e7a;margin-top:5px}.hand-area{flex:1;display:grid;place-items:center;overflow:hidden;min-height:310px;position:relative}.sparkle{position:absolute;color:#ed9bc1;font-size:23px;user-select:none}.s1{left:9%;top:20%}.s2{right:10%;top:34%}.s3{left:18%;bottom:15%}.s4{right:17%;bottom:17%}.hand{width:min(100%,410px);height:auto;filter:drop-shadow(0 13px 10px #a65b6a18)}.nail{stroke:#c47a8b;stroke-width:2;cursor:pointer}.nail:hover{filter:brightness(1.07);stroke-width:3}.nail.selected{stroke:#7a315f;stroke-width:4}.hand-hint{text-align:center;color:#a07893;font-size:.8rem}.controls{display:flex;flex-direction:column;gap:17px}.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;gap:8px}.section-head small{color:#a27b94}.swatches{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:9px}.swatch{aspect-ratio:1;border-radius:50%;border:3px solid white;box-shadow:0 2px 7px #78425b25;position:relative}.swatch[aria-pressed=true]{outline:3px solid #b75d8b;outline-offset:2px}.swatch[aria-pressed=true]:after{content:"✓";position:absolute;inset:0;display:grid;place-items:center;color:white;font-weight:900;text-shadow:0 1px 4px #555}.options{display:flex;flex-wrap:wrap;gap:8px}.option{border:1px solid #efd2e1;border-radius:13px;background:#fff8fc;color:#87516f;padding:9px 11px;font-size:.85rem;font-weight:750}.option[aria-pressed=true]{background:#ffe0ee;border-color:#df80ae}.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.primary,.secondary{border:0;border-radius:14px;padding:12px 10px;font-weight:850}.primary{background:linear-gradient(135deg,#ed91bb,#d66da7);color:white}.secondary{background:#fff0f6;color:#a24c7b;border:1px solid #f4d7e5}.status,.finish-note{text-align:center;font-size:.82rem;color:#a24c7b;min-height:1.2em}.new-customer{width:100%}@media(max-width:760px){.layout{grid-template-columns:1fr}.stage{min-height:500px}.hand-area{min-height:290px}.app{padding:17px 11px 25px}}
+</style></head><body><main class="app"><header><div class="eyebrow">✦ Open for fabulous manicures ✦</div><h1>Your Nail <span>Salon</span> 💅</h1><p>Welcome your customers, follow their inspo, and give them a manicure they'll love!</p><div class="salon-stats"><span class="stat">💖 Happy customers: <b id="happy-count">0</b></span><span class="stat">⭐ Salon stars: <b id="star-count">0</b></span><span class="stat">🪑 <b id="queue-count">6</b> customers waiting</span></div></header>
+<div class="layout"><section class="panel stage"><div class="stage-top"><h2>💗 At your nail table</h2><span class="pill" id="selected-label">Nail 1 selected</span></div><div class="customer-card"><div class="avatar" id="customer-avatar">👩🏻</div><div class="customer-info"><h3 id="customer-name">Mia is here!</h3><p id="customer-dialogue">Hi! Can you make my nails extra cute?</p><div class="request" id="customer-request">Her inspo: pink French tips</div></div></div>
+<div class="hand-area"><span class="sparkle s1">✦</span><span class="sparkle s2">✧</span><span class="sparkle s3">✦</span><span class="sparkle s4">♡</span>
+<!-- A single, continuous silhouette: four upright fingers, palm, and a side thumb. Nails sit on top of each finger. -->
+<svg class="hand" viewBox="0 0 400 440" role="img" aria-label="Five-finger hand with a clickable thumb and four fingers">
+<defs><linearGradient id="skin" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffdfcf"/><stop offset="1" stop-color="#edb5a3"/></linearGradient>
+<clipPath id="n1clip"><path d="M83 132 Q83 113 100 113 Q117 113 117 132 L117 158 Q100 169 83 158Z"/></clipPath>
+<clipPath id="n2clip"><path d="M139 92 Q139 70 157 70 Q175 70 175 92 L175 122 Q157 133 139 122Z"/></clipPath>
+<clipPath id="n3clip"><path d="M195 70 Q195 47 214 47 Q233 47 233 70 L233 101 Q214 113 195 101Z"/></clipPath>
+<clipPath id="n4clip"><path d="M251 104 Q253 83 271 85 Q289 87 286 108 L281 137 Q264 147 248 135Z"/></clipPath>
+<clipPath id="n5clip"><path d="M99 266 Q84 250 70 263 Q57 277 72 293 L97 316 Q110 321 121 308Z"/></clipPath></defs>
+<!-- Silhouette path includes thumb and palm in one continuous shape -->
+<path d="M119 384 C97 364 91 330 91 296 L70 278 Q55 263 69 249 Q83 235 99 249 L127 274 L127 135 Q127 112 145 110 Q163 109 163 133 L163 255 L163 94 Q163 69 182 69 Q201 69 201 94 L201 253 L201 72 Q201 45 220 45 Q239 45 239 72 L239 257 L256 107 Q259 84 277 88 Q295 92 290 115 L271 282 C267 326 249 363 222 385 C195 407 145 406 119 384Z" fill="url(#skin)" stroke="#d99d8c" stroke-width="2.2"/>
+<path d="M119 384 C97 364 91 330 91 296 L70 278 Q55 263 69 249 Q83 235 99 249 L127 274 M163 133 L163 255 M201 94 L201 253 M239 72 L239 257 M290 115 L271 282" fill="none" stroke="#d99d8c" stroke-width="1.5" opacity=".55"/>
 <g id="nails">
-<path id="nail-1" class="nail selected" data-nail="0" d="M110 124 Q107 108 121 105 Q136 104 139 120 L143 146 Q130 155 116 148Z" fill="#f08ab7"/>
-<path id="nail-2" class="nail" data-nail="1" d="M157 83 Q157 66 173 65 Q188 66 188 84 L188 108 Q173 117 159 107Z" fill="#f6c4d9"/>
-<path id="nail-3" class="nail" data-nail="2" d="M207 63 Q208 45 224 45 Q240 46 239 64 L237 91 Q222 100 207 90Z" fill="#f6c4d9"/>
-<path id="nail-4" class="nail" data-nail="3" d="M258 91 Q260 74 276 76 Q291 79 287 96 L282 121 Q267 128 254 117Z" fill="#f6c4d9"/>
-<path id="nail-5" class="nail" data-nail="4" d="M103 242 Q91 229 79 239 Q67 250 79 264 L98 285 Q111 290 120 278Z" fill="#f6c4d9"/>
-</g><g id="decorations" pointer-events="none"></g>
-</svg>
-</div>
-<p class="hand-hint">Tap any nail to paint it ✨ The thumb is on the side!</p>
-</section>
-<aside class="panel controls">
-<section><div class="section-head"><h2>🎨 Choose your polish</h2><small>12 salon shades</small></div><div class="swatches" id="swatches" aria-label="Polish colors"></div></section>
-<section><div class="section-head"><h2>✨ Nail art</h2></div><div class="options" id="patterns">
-<button class="option" data-pattern="solid" aria-pressed="true">♡ Classic</button><button class="option" data-pattern="glitter" aria-pressed="false">✦ Glitter</button><button class="option" data-pattern="dots" aria-pressed="false">•• Polka dots</button><button class="option" data-pattern="heart" aria-pressed="false">♥ Hearts</button><button class="option" data-pattern="french" aria-pressed="false">French tips</button>
-</div></section>
-<section><div class="section-head"><h2>💅 Paint the manicure</h2></div><div class="options"><button class="option" id="paint-all">🎨 Paint all nails</button><button class="option" id="randomize">🎲 Surprise me</button></div></section>
-<div class="actions"><button class="primary" id="finish-customer">Finish manicure ✓</button><button class="secondary" id="reset">Redo this set ↺</button></div>
-<p class="finish-note" id="finish-note">Match the customer's inspo for bonus salon stars!</p>
-<button class="primary new-customer" id="next-customer" hidden>Welcome next customer ➜</button>
-<p class="status" id="status" role="status" aria-live="polite">Mia is waiting for her manicure. Let's make her day!</p>
-</aside>
-</div>
-<footer class="salon-footer">Your salon, your rules, your sparkle ✧</footer>
-</main>
+<path class="nail selected" data-nail="0" d="M83 132 Q83 113 100 113 Q117 113 117 132 L117 158 Q100 169 83 158Z" fill="#f6c4d9"/>
+<path class="nail" data-nail="1" d="M139 92 Q139 70 157 70 Q175 70 175 92 L175 122 Q157 133 139 122Z" fill="#f6c4d9"/>
+<path class="nail" data-nail="2" d="M195 70 Q195 47 214 47 Q233 47 233 70 L233 101 Q214 113 195 101Z" fill="#f6c4d9"/>
+<path class="nail" data-nail="3" d="M251 104 Q253 83 271 85 Q289 87 286 108 L281 137 Q264 147 248 135Z" fill="#f6c4d9"/>
+<path class="nail" data-nail="4" d="M99 266 Q84 250 70 263 Q57 277 72 293 L97 316 Q110 321 121 308Z" fill="#f6c4d9"/>
+</g><g id="decorations" pointer-events="none"></g></svg></div><p class="hand-hint">Tap a nail to paint it ✨ The thumb is on the side!</p></section>
+<aside class="panel controls"><section><div class="section-head"><h2>🎨 Choose your polish</h2><small>12 salon shades</small></div><div class="swatches" id="swatches"></div></section><section><div class="section-head"><h2>✨ Nail art</h2></div><div class="options" id="patterns"><button class="option" data-pattern="solid" aria-pressed="true">♡ Classic</button><button class="option" data-pattern="glitter">✦ Glitter</button><button class="option" data-pattern="dots">•• Polka dots</button><button class="option" data-pattern="heart">♥ Hearts</button><button class="option" data-pattern="french">French tips</button></div></section><section><div class="section-head"><h2>💅 Paint the manicure</h2></div><div class="options"><button class="option" id="paint-all">🎨 Paint all nails</button><button class="option" id="randomize">🎲 Surprise me</button></div></section><div class="actions"><button class="primary" id="finish-customer">Finish manicure ✓</button><button class="secondary" id="reset">Redo this set ↺</button></div><p class="finish-note" id="finish-note">Match the customer's inspo for bonus salon stars!</p><button class="primary new-customer" id="next-customer" hidden>Welcome next customer ➜</button><p class="status" id="status" role="status" aria-live="polite">Mia is waiting for her manicure!</p></aside></div><footer style="text-align:center;color:#a27b94;font-size:.8rem;margin:18px">Your salon, your rules, your sparkle ✧</footer></main>
 <script>
-const colors=[
-{name:'Bubblegum',hex:'#f08ab7'},{name:'Cherry',hex:'#e94d70'},{name:'Lavender',hex:'#b6a0ed'},
-{name:'Sky blue',hex:'#83cce8'},{name:'Mint',hex:'#8ed8bf'},{name:'Buttercup',hex:'#f4d36c'},
-{name:'Peach',hex:'#f6a17e'},{name:'Berry',hex:'#a94c86'},{name:'Chocolate',hex:'#80534d'},
-{name:'Pearl',hex:'#fff0f6'},{name:'Midnight',hex:'#46466f'},{name:'Silver',hex:'#c6cbd7'}
-];
-const customers=[
-{name:'Mia',emoji:'👩🏻',hello:'Hi! Can you make my nails extra cute?',request:'pink French tips',color:'#f08ab7',pattern:'french'},
-{name:'Zoe',emoji:'👩🏽',hello:'I have a party tonight! I love a little sparkle.',request:'lavender glitter',color:'#b6a0ed',pattern:'glitter'},
-{name:'Ava',emoji:'👩🏼‍🦰',hello:'I want something sweet and playful, please!',request:'mint with tiny hearts',color:'#8ed8bf',pattern:'heart'},
-{name:'Luna',emoji:'👩🏾',hello:'Surprise me with a dreamy look!',request:'sky-blue polka dots',color:'#83cce8',pattern:'dots'},
-{name:'Ruby',emoji:'👩🏼',hello:'Could I get a bold, classic manicure?',request:'cherry red classic',color:'#e94d70',pattern:'solid'},
-{name:'Poppy',emoji:'👩🏻‍🦱',hello:'Pastels make me so happy!',request:'peach French tips',color:'#f6a17e',pattern:'french'}
-];
-const nails=[...document.querySelectorAll('.nail')],swatches=document.getElementById('swatches'),patterns=document.getElementById('patterns'),decorGroup=document.getElementById('decorations');
-let selected=0,color=colors[0].hex,pattern='solid',customerIndex=0,happy=0,stars=0,served=0,finished=false;
-let designs=nails.map(()=>({color:colors[0].hex,pattern:'solid'}));
-const $=id=>document.getElementById(id);
-function status(msg){$('status').textContent=msg}
-function syncOptions(){[...swatches.children].forEach((el,j)=>el.setAttribute('aria-pressed',colors[j].hex===color?'true':'false'));[...patterns.children].forEach(el=>el.setAttribute('aria-pressed',el.dataset.pattern===pattern?'true':'false'))}
-colors.forEach((c,i)=>{const b=document.createElement('button');b.className='swatch';b.style.background=c.hex;b.title=c.name;b.setAttribute('aria-label',c.name);b.setAttribute('aria-pressed',i===0?'true':'false');b.addEventListener('click',()=>{color=c.hex;syncOptions();paintSelected();status(c.name+' polish selected!')});swatches.appendChild(b)});
-function selectNail(i){selected=i;nails.forEach((n,j)=>n.classList.toggle('selected',j===i));$('selected-label').textContent=(i===4?'Thumb':('Nail '+(i+1)))+' selected';color=designs[i].color;pattern=designs[i].pattern;syncOptions();status('Now styling '+(i===4?'the thumb':'nail '+(i+1))+'!')}
-function paintSelected(){if(finished)return;designs[selected]={color,pattern};render()}
-const nailCenters=[{x:125,y:130,rx:12,ry:22},{x:173,y:87,rx:13,ry:21},{x:223,y:66,rx:13,ry:22},{x:271,y:98,rx:13,ry:22},{x:94,y:258,rx:20,ry:15}];
-function render(){
-nails.forEach((n,i)=>{const d=designs[i];n.setAttribute('fill',d.color);n.setAttribute('aria-label',(i===4?'Thumb':'Nail '+(i+1))+', '+d.pattern+' pattern')});
-decorGroup.innerHTML='';
-designs.forEach((d,i)=>{const c=nailCenters[i];const add=(tag,attrs)=>{const el=document.createElementNS('http://www.w3.org/2000/svg',tag);Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,v));decorGroup.appendChild(el);return el};
-if(d.pattern==='glitter'){[[-5,-8],[4,-3],[-2,5],[5,9]].forEach(([dx,dy])=>add('path',{d:'M '+(c.x+dx)+' '+(c.y+dy-2)+' l 2 2 l -2 2 l -2 -2Z',fill:'#fff9dc',opacity:'.98'}))}
-else if(d.pattern==='dots'){[[-4,-7],[4,-1],[-3,5],[4,9]].forEach(([dx,dy])=>add('circle',{cx:c.x+dx,cy:c.y+dy,r:2.3,fill:'#fff6fa',opacity:'.98'}))}
-else if(d.pattern==='heart'){const t=add('text',{x:c.x,y:c.y+5,'font-size':'14','text-anchor':'middle',fill:'#fff4f8'});t.textContent='♥'}
-else if(d.pattern==='french'){
-// The white smile follows the nail's own silhouette and is clipped inside that nail.
-const id=['clip-pinky','clip-ring','clip-middle','clip-index','clip-thumb'][i];
-const paths=[
-'M 110 125 Q 126 133 142 125 L 143 146 Q 130 155 116 148Z',
-'M 158 84 Q 173 92 188 84 L 188 108 Q 173 117 159 107Z',
-'M 208 64 Q 223 72 239 64 L 237 91 Q 222 100 207 90Z',
-'M 258 92 Q 273 101 288 92 L 282 121 Q 267 128 254 117Z',
-'M 73 249 Q 88 252 104 241 L 120 278 Q 111 290 98 285 L 79 264Z'
-];
-add('path',{d:paths[i],fill:'#fffafc',stroke:'#fff', 'stroke-width':'1','clip-path':'url(#'+id+')'});
-}
-});
-}
-nails.forEach((n,i)=>{n.setAttribute('tabindex','0');n.setAttribute('role','button');n.addEventListener('click',()=>selectNail(i));n.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();selectNail(i)}})});
-patterns.addEventListener('click',e=>{const b=e.target.closest('[data-pattern]');if(!b||finished)return;pattern=b.dataset.pattern;syncOptions();paintSelected();status(b.textContent.trim()+' style applied!')});
-$('paint-all').addEventListener('click',()=>{if(finished)return;designs=designs.map(()=>({color,pattern}));render();status('All five nails, including the thumb, are polished! ✨')});
-$('randomize').addEventListener('click',()=>{if(finished)return;designs=designs.map(()=>({color:colors[Math.floor(Math.random()*colors.length)].hex,pattern:['solid','glitter','dots','heart','french'][Math.floor(Math.random()*5)]}));render();status('A surprise manicure just for your customer! 💖')});
-$('reset').addEventListener('click',()=>{if(finished)return;designs=nails.map(()=>({color:'#f6c4d9',pattern:'solid'}));color=colors[0].hex;pattern='solid';selectNail(0);render();status('Fresh canvas! Give '+customers[customerIndex].name+' a new look.')});
-function showCustomer(){const c=customers[customerIndex%customers.length];$('customer-avatar').textContent=c.emoji;$('customer-name').textContent=c.name+' is here!';$('customer-dialogue').textContent=c.hello;$('customer-request').textContent='Her inspo: '+c.request;$('queue-count').textContent=Math.max(0,customers.length-served);finished=false;$('finish-customer').hidden=false;$('finish-customer').disabled=false;$('next-customer').hidden=true;$('finish-note').textContent='Match the customer’s inspo for bonus salon stars!';$('selected-label').textContent='Nail 1 selected';nails.forEach((n,i)=>n.classList.toggle('selected',i===0));designs=nails.map(()=>({color:'#f6c4d9',pattern:'solid'}));color=colors[0].hex;pattern='solid';syncOptions();render();status(customers[customerIndex%customers.length].name+' is waiting for a manicure. Let’s make her day!')}
-$('finish-customer').addEventListener('click',()=>{if(finished)return;const c=customers[customerIndex%customers.length];const matched=designs.filter(d=>d.color===c.color&&d.pattern===c.pattern).length;happy++;const earned=matched>=4?3:matched>=2?2:1;stars+=earned;served++;$('happy-count').textContent=happy;$('star-count').textContent=stars;$('queue-count').textContent=Math.max(0,customers.length-served);finished=true;$('finish-customer').hidden=true;$('next-customer').hidden=false;$('finish-note').textContent=matched>=4?'Perfect match! Your customer is thrilled! 💖':matched>=2?'Lovely work! You matched some of the inspo! ✨':'Manicure complete! Try matching more of the inspo next time.';status(c.name+' says “Thank you, I love them!” You earned '+earned+' salon star'+(earned===1?'':'s')+'!');});
-$('next-customer').addEventListener('click',()=>{customerIndex++;if(served>=customers.length){customerIndex=0;served=0;status('A fresh day at the salon! New customers are arriving.')}showCustomer()});
-showCustomer();
-</script>
-</body>
-</html>
+const colors=[{name:'Bubblegum',hex:'#f08ab7'},{name:'Cherry',hex:'#e94d70'},{name:'Lavender',hex:'#b6a0ed'},{name:'Sky blue',hex:'#83cce8'},{name:'Mint',hex:'#8ed8bf'},{name:'Buttercup',hex:'#f4d36c'},{name:'Peach',hex:'#f6a17e'},{name:'Berry',hex:'#a94c86'},{name:'Chocolate',hex:'#80534d'},{name:'Pearl',hex:'#fff0f6'},{name:'Midnight',hex:'#46466f'},{name:'Silver',hex:'#c6cbd7'}];
+const customers=[{name:'Mia',emoji:'👩🏻',hello:'Hi! Can you make my nails extra cute?',request:'pink French tips',color:'#f08ab7',pattern:'french'},{name:'Zoe',emoji:'👩🏽',hello:'I have a party tonight! I love a little sparkle.',request:'lavender glitter',color:'#b6a0ed',pattern:'glitter'},{name:'Ava',emoji:'👩🏼‍🦰',hello:'I want something sweet and playful, please!',request:'mint with tiny hearts',color:'#8ed8bf',pattern:'heart'},{name:'Luna',emoji:'👩🏾',hello:'Surprise me with a dreamy look!',request:'sky-blue polka dots',color:'#83cce8',pattern:'dots'},{name:'Ruby',emoji:'👩🏼',hello:'Could I get a bold, classic manicure?',request:'cherry red classic',color:'#e94d70',pattern:'solid'},{name:'Poppy',emoji:'👩🏻‍🦱',hello:'Pastels make me so happy!',request:'peach French tips',color:'#f6a17e',pattern:'french'}];
+const nails=[...document.querySelectorAll('.nail')],swatches=document.getElementById('swatches'),patterns=document.getElementById('patterns'),decor=document.getElementById('decorations');let selected=0,color=colors[0].hex,pattern='solid',ci=0,happy=0,stars=0,served=0,finished=false,designs=nails.map(()=>({color:'#f6c4d9',pattern:'solid'}));const $=id=>document.getElementById(id),say=t=>$('status').textContent=t;
+colors.forEach((c,i)=>{let b=document.createElement('button');b.className='swatch';b.style.background=c.hex;b.title=c.name;b.setAttribute('aria-label',c.name);b.setAttribute('aria-pressed',i===0);b.onclick=()=>{if(finished)return;color=c.hex;sync();paint();say(c.name+' polish selected!')};swatches.appendChild(b)});
+function sync(){[...swatches.children].forEach((e,i)=>e.setAttribute('aria-pressed',colors[i].hex===color));[...patterns.children].forEach(e=>e.setAttribute('aria-pressed',e.dataset.pattern===pattern))}
+function select(i){selected=i;nails.forEach((n,j)=>n.classList.toggle('selected',i===j));$('selected-label').textContent=(i===4?'Thumb':'Nail '+(i+1))+' selected';color=designs[i].color;pattern=designs[i].pattern;sync();say('Now styling '+(i===4?'the thumb':'nail '+(i+1))+'!')}
+function paint(){if(finished)return;designs[selected]={color,pattern};render()}
+const centers=[{x:100,y:141},{x:157,y:100},{x:214,y:77},{x:267,y:111},{x:89,y:286}];
+function render(){nails.forEach((n,i)=>{n.setAttribute('fill',designs[i].color);n.setAttribute('aria-label',(i===4?'Thumb':'Nail '+(i+1))) });decor.innerHTML='';designs.forEach((d,i)=>{let c=centers[i],add=(tag,attrs)=>{let e=document.createElementNS('http://www.w3.org/2000/svg',tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));decor.appendChild(e);return e};if(d.pattern==='glitter'){[[-5,-7],[5,-2],[-3,5],[4,10]].forEach(([x,y])=>add('path',{d:'M '+(c.x+x)+' '+(c.y+y-2)+' l 2 2 l -2 2 l -2 -2Z',fill:'#fff9dc'}))}if(d.pattern==='dots'){[[-4,-7],[4,-1],[-3,5],[4,10]].forEach(([x,y])=>add('circle',{cx:c.x+x,cy:c.y+y,r:2.3,fill:'#fff6fa'}))}if(d.pattern==='heart'){let e=add('text',{x:c.x,y:c.y+5,'font-size':14,'text-anchor':'middle',fill:'#fff4f8'});e.textContent='♥'}if(d.pattern==='french'){const clip=['n1clip','n2clip','n3clip','n4clip','n5clip'][i];const paths=['M 83 132 Q 100 145 117 132 L 117 158 Q 100 169 83 158Z','M 139 92 Q 157 106 175 92 L 175 122 Q 157 133 139 122Z','M 195 70 Q 214 84 233 70 L 233 101 Q 214 113 195 101Z','M 251 104 Q 269 118 286 104 L 281 137 Q 264 147 248 135Z','M 61 273 Q 78 282 96 263 L 121 308 Q 110 321 97 316 L 72 293Z'];add('path',{d:paths[i],fill:'#fffafc','clip-path':'url(#'+clip+')',stroke:'#fff','stroke-width':1})}})}
+nails.forEach((n,i)=>{n.tabIndex=0;n.setAttribute('role','button');n.onclick=()=>select(i);n.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select(i)}}});
+patterns.onclick=e=>{let b=e.target.closest('[data-pattern]');if(!b||finished)return;pattern=b.dataset.pattern;sync();paint();say(b.textContent.trim()+' style applied!')};
+$('paint-all').onclick=()=>{if(finished)return;designs=designs.map(()=>({color,pattern}));render();say('All five nails including the thumb are polished!')};
+$('randomize').onclick=()=>{if(finished)return;designs=designs.map(()=>({color:colors[Math.random()*colors.length|0].hex,pattern:['solid','glitter','dots','heart','french'][Math.random()*5|0]}));render();say('Surprise manicure!')};
+$('reset').onclick=()=>{if(finished)return;designs=nails.map(()=>({color:'#f6c4d9',pattern:'solid'}));color=colors[0].hex;pattern='solid';select(0);render();say('Fresh canvas!')};
+function nextCustomer(){let c=customers[ci%customers.length];$('customer-avatar').textContent=c.emoji;$('customer-name').textContent=c.name+' is here!';$('customer-dialogue').textContent=c.hello;$('customer-request').textContent='Her inspo: '+c.request;$('queue-count').textContent=Math.max(0,customers.length-served);finished=false;$('finish-customer').hidden=false;$('next-customer').hidden=true;$('finish-note').textContent='Match the inspo for bonus salon stars!';designs=nails.map(()=>({color:'#f6c4d9',pattern:'solid'}));selected=0;color=colors[0].hex;pattern='solid';nails.forEach((n,i)=>n.classList.toggle('selected',i===0));$('selected-label').textContent='Nail 1 selected';sync();render();say(c.name+' is ready for a manicure!')}
+$('finish-customer').onclick=()=>{if(finished)return;let c=customers[ci%customers.length],matched=designs.filter(d=>d.color===c.color&&d.pattern===c.pattern).length,earned=matched>=4?3:matched>=2?2:1;happy++;stars+=earned;served++;$('happy-count').textContent=happy;$('star-count').textContent=stars;$('queue-count').textContent=Math.max(0,customers.length-served);finished=true;$('finish-customer').hidden=true;$('next-customer').hidden=false;$('finish-note').textContent=matched>=4?'Perfect match! Your customer is thrilled! 💖':matched>=2?'Lovely work! You matched some of the inspo! ✨':'Manicure complete! Try matching more inspo next time.';say(c.name+' says “I love them!” You earned '+earned+' salon star'+(earned===1?'':'s')+'!')};
+$('next-customer').onclick=()=>{ci++;if(served>=customers.length){ci=0;served=0;say('A fresh day at the salon!')}nextCustomer()};nextCustomer();
+</script></body></html>
