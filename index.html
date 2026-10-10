@@ -156,7 +156,23 @@ flecks.forEach(([x,y],j)=>speck(x,y,[1.8,2.2,1.5][j%3],colors[j%4],[.95,.85,.75]
 }
 };
 nails.forEach((n,i)=>{const d=ds[i],base=d?.strokes?d.base:d,path=nativeNailPaths[i];n.setAttribute('d',path);clips[i].setAttribute('d',path);highlights[i].setAttribute('d',path);highlights[i].setAttribute('opacity',base?'1':'0');n.setAttribute('fill',base?palette[base.color].hex:'transparent');n.setAttribute('fill-opacity',base?'.82':'0');n.setAttribute('aria-pressed',i===selectedNail);n.classList.toggle('is-selected',i===selectedNail);n.setAttribute('aria-label',(prepTool==='paint'?'Paint ':prepTool==='clean'?'Clean ':'Trim ')+nailNames[i]+' nail'+(d?': '+palette[d.color].name+', '+styleNames[d.style]:': unpainted'));n.setAttribute('aria-disabled',locked());
-if(!prepReady(i)&&!d){const layer=group($('decorations'),n,{'clip-path':'url(#nailclip-'+i+')'}),[sx,sy]=nailScales[i];if(!currentPrep()[i].clean)[[-5,-9],[4,1],[0,-17]].forEach(([x,y])=>add(layer,'ellipse',{cx:x,cy:y,rx:3/sx,ry:3/sy,fill:'#b2998d',opacity:'.55'}));if(!currentPrep()[i].trim)add(layer,'path',{d:'M -18 -19 Q 0 -26 18 -19',fill:'none',stroke:'#ac8fbd','stroke-width':'.7','stroke-dasharray':'2 2',opacity:'.7'});}
+if(!prepReady(i)&&!d){
+const layer=group($('decorations'),n,{'clip-path':'url(#nailclip-'+i+')',class:'nail-prep-art'}),prep=currentPrep()[i];
+if(!prep.clean){
+const dirt=add(layer,'g',{class:'nail-dirt'});
+// Dull yellowing, uneven smudges and dirt beneath the outer edge stay inside the original nail.
+add(dirt,'path',{d:path,fill:'#c4ad75',opacity:'.48'});
+const smudges=['M -14 -8 Q -10 -14 -6 -9 Q -3 -6 -7 -2 Q -12 1 -14 -8 Z','M 0 -3 Q 4 -8 9 -4 Q 13 -1 9 4 Q 3 7 0 -3 Z','M -4 5 Q -1 2 3 5 L 6 10 Q -2 14 -4 5 Z'];
+smudges.forEach((d,j)=>add(dirt,'path',{d,transform:`translate(${nailCenters[i]+(i%3-1)*2} ${i%2?2:-1})`,fill:j===1?'#82664d':'#a08357',opacity:j===1?'.55':'.44'}));
+add(dirt,'path',{d:'M -32 -35 H 32 V -18 L 12 -17 L 7 -19 L 2 -16 L -3 -18 L -8 -16 L -13 -19 L -32 -17 Z',fill:'#745d47',opacity:'.68'});
+[[-8,-14],[4,-10],[10,1],[-6,6],[1,8]].forEach(([x,y],j)=>add(dirt,'ellipse',{cx:x+nailCenters[i],cy:y,rx:1.2+j%2*.5,ry:.8,fill:'#6e563f',opacity:'.65'}));
+}
+if(!prep.trim){
+const rough=add(layer,'g',{class:'nail-rough-tip'});
+add(rough,'path',{d:'M -35 -35 H 35 V -23 L 12 -22 L 8 -24 L 4 -20 L 0 -23 L -4 -21 L -8 -24 L -12 -21 L -17 -23 L -35 -21 Z',fill:prep.clean?'#d5c9b4':'#9b8767',opacity:'.85'});
+add(rough,'path',{d:'M -16 -21 L -12 -19 L -8 -22 L -4 -19 L 0 -21 L 4 -18 L 8 -22 L 12 -19 L 16 -21',fill:'none',stroke:prep.clean?'#a99780':'#6b5743','stroke-width':'.65',opacity:'.8'});
+}
+}
 if(base&&base.style!=='solid')decorate(group($('decorations'),n,{'clip-path':'url(#nailclip-'+i+')'}),base,i);
 if(d?.strokes)d.strokes.forEach((stroke,j)=>{
 const layer=group($('decorations'),n,{'clip-path':'url(#nailclip-'+i+')'}),defs=add(layer,'defs',{}),id='brush-mask-'+i+'-'+j,[sx,sy]=nailScales[i];
