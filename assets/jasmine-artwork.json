@@ -1,0 +1,7 @@
+{
+  "method": "Built-in imagegen background-extraction edit; transparent alpha preserved; standard cropped/resized WebP game asset.",
+  "source": "upload/Jasmine’s warm deep-brown update.png",
+  "editedSource": "generated_images/exec-9c28489f-29eb-4555-99f7-7954b17a889e.png",
+  "asset": "assets/jasmine.webp",
+  "prompt": "Use case: background-extraction. Edit target: attached Jasmine character image. Remove ONLY all background, including black/white areas and brown/blue glow surrounding the girl and in the gaps between arms and torso/legs. Output a genuine transparent RGBA cutout. Preserve exactly Jasmine's original darker brown skin, dark brown eyes, black braids with blonde ends, peach shirt, blue jeans, peach-and-white sneakers, pose, face, proportions, illustration style and every outfit detail. Keep her entire full body and all hair, hands and shoes visible. No added shadow, glow, outlines, backdrop, text, or redesign. Maintain original composition and character size as closely as possible; only extract the existing girl cleanly with no light or dark halo."
+}
