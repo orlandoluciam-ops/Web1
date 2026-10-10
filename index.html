@@ -13,6 +13,7 @@ body{background:radial-gradient(ellipse at top left,#fce5ef,transparent 50%),#f5
 .portrait{width:72px;height:76px;overflow:hidden;background:#f0e8f7;border:1px solid #e5d8ee}
 .portrait svg{display:block;width:100%;height:100%}
 @media(max-width:720px){.portrait{width:64px;height:68px}}
+.mini-nail.dots,.mini-nail.glitter{background:#de8fae}.mini-nail svg{display:block;width:100%;height:100%}
 </style>
 </head>
 <body>
@@ -127,7 +128,7 @@ body{background:radial-gradient(ellipse at top left,#fce5ef,transparent 50%),#f5
 </section>
 <aside class="tools" aria-label="Polish and nail art">
 <section><div class="step">01 / Choose your color</div><h3>The polish shelf</h3><p class="help">Selected: <b id="chosen-color">Rose</b></p><div class="swatches" id="swatches"></div></section>
-<section><div class="step">02 / Pick a style</div><h3>A finishing touch</h3><div class="styles" id="styles"><button class="style" data-style="solid" aria-pressed="true"><span class="mini-nail"></span>Classic</button><button class="style" data-style="french" aria-pressed="false"><span class="mini-nail french"></span>French tips</button><button class="style" data-style="dots" aria-pressed="false"><span class="mini-nail dots"></span>Dots · L2</button><button class="style" data-style="hearts" aria-pressed="false"><span class="mini-nail hearts">♥</span>Hearts · L2</button><button class="style" data-style="glitter" aria-pressed="false"><span class="mini-nail glitter"></span>Glitter · L4</button></div><p class="help" style="margin:10px 0 0">French tips add a white edge to your chosen color.</p></section>
+<section><div class="step">02 / Pick a style</div><h3>A finishing touch</h3><div class="styles" id="styles"><button class="style" data-style="solid" aria-pressed="true"><span class="mini-nail"></span>Classic</button><button class="style" data-style="french" aria-pressed="false"><span class="mini-nail french"></span>French tips</button><button class="style" data-style="dots" aria-pressed="false"><span class="mini-nail dots"><svg viewBox="0 0 20 28" aria-hidden="true"><g fill="#fffafc"><circle cx="10" cy="5" r="1.8"/><circle cx="5" cy="11" r="1.8"/><circle cx="14" cy="13" r="1.8"/><circle cx="6" cy="20" r="1.8"/><circle cx="13" cy="23" r="1.8"/></g></svg></span>Dots · L2</button><button class="style" data-style="hearts" aria-pressed="false"><span class="mini-nail hearts">♥</span>Hearts · L2</button><button class="style" data-style="glitter" aria-pressed="false"><span class="mini-nail glitter"><svg viewBox="0 0 20 28" aria-hidden="true"><g fill="#fff8d1"><circle cx="5" cy="5" r=".8"/><circle cx="14" cy="6" r="1"/><circle cx="4" cy="16" r="1"/><circle cx="15" cy="20" r=".8"/><circle cx="8" cy="24" r="1"/><path d="M9 7Q10 11 14 12Q10 13 9 17Q8 13 4 12Q8 11 9 7ZM12 17Q13 19 15 20Q13 21 12 23Q11 21 9 20Q11 19 12 17Z"/></g></svg></span>Glitter · L4</button></div><p class="help" style="margin:10px 0 0">French tips add a white edge to your chosen color.</p></section>
 <section><div class="step">03 / Paint all five nails</div><h3>Make it lovely</h3><p class="help">Tap nails to paint individually, or do the full set.</p><div class="buttons"><button class="secondary wide" id="paint-all">Paint all five</button><button class="secondary" id="undo" disabled>Undo</button><button class="secondary" id="clear">Clear</button></div></section>
 <p class="status" id="status" role="status" aria-live="polite">Mia is ready! Match her requested color and style for three stars.</p>
 <button class="finish" id="finish">Finish manicure ✧</button><button class="finish" id="next" hidden>Welcome next customer →</button>
@@ -146,6 +147,7 @@ function initial(){return {served:0,stars:0,cash:0,xp:0,finished:false,designs:f
 let state=initial(),color=0,style='solid',history=[],mode='salon',freeDesigns=fresh(),freeHistory=[],selectedNail=null;
 const nailCenters=[0,0,-.5,-1,-5];
 const nativeNailPaths=nails.map(n=>n.getAttribute('d'));
+const nailScales=nails.map(n=>n.parentNode.getAttribute('transform').match(/scale\(([\d.]+)\s+([\d.]+)\)/).slice(1).map(Number));
 // Reuse exactly the same geometry as the painting overlays, including the angled thumb.
 nails.forEach((n,i)=>{const path=document.createElementNS(svgNS,'path');path.setAttribute('d',nativeNailPaths[i]);path.setAttribute('transform',n.parentNode.getAttribute('transform'));$('skin-nail-exclusions').appendChild(path)});
 const say=t=>$('status').textContent=t,level=()=>levels.reduce((n,l,i)=>state.xp>=l.xp?i+1:n,1),currentDesigns=()=>mode==='free'?freeDesigns:state.designs,locked=()=>mode!=='free'&&state.finished;
@@ -166,9 +168,16 @@ nails.forEach((n,i)=>{const d=ds[i],path=nativeNailPaths[i];n.setAttribute('d',p
 
 if(!d||d.style==='solid')return;const layer=group($('decorations'),n,{'clip-path':'url(#nailclip-'+i+')'}),artY=y=>y;
 if(d.style==='french'){const boundary=-17;add(layer,'path',{d:`M -40 -34 H 40 V ${boundary} Q ${nailCenters[i]} ${boundary+4} -40 ${boundary} Z`,fill:'#fffafc'});}
-if(d.style==='dots')[[-7,-17],[6,-12],[-5,-3],[6,4]].forEach(([x,y])=>add(layer,'circle',{cx:x+nailCenters[i],cy:artY(y),r:2,fill:'#fffafc'}));
+// Compensate for each nail's unequal x/y scale so dots and sparkles keep their proportions.
+const [sx,sy]=nailScales[i],speck=(x,y,r,fill,opacity=1)=>add(layer,'ellipse',{cx:x+nailCenters[i],cy:y,rx:r/sx,ry:r/sy,fill,opacity});
+if(d.style==='dots')[[0,-17],[-6,-8],[6,-5],[-5,4],[5,7]].forEach(([x,y])=>speck(x,y,6,'#fffafc'));
 if(d.style==='hearts'){const art=add(layer,'g',{transform:`translate(${nailCenters[i]} ${artY(-7)}) scale(.85)`});add(art,'path',{d:'M 0 7 C -14 -1 -9 -11 0 -4 C 9 -11 14 -1 0 7 Z',fill:'#fffafc'});}
-if(d.style==='glitter')[[-7,-17],[5,-12],[-4,-3],[7,5],[0,10]].forEach(([x,y])=>add(layer,'path',{d:`M ${x+nailCenters[i]} ${artY(y)-3} l 2 3 l -2 3 l -2 -3 Z`,fill:'#fff5bc'}));
+if(d.style==='glitter'){
+const flecks=[[0,-19],[-5,-15],[5,-14],[-7,-10],[1,-9],[7,-7],[-3,-5],[-8,-2],[3,-1],[8,1],[-4,2],[0,4],[-7,6],[4,7],[0,9]];
+const colors=['#fff8d1','#ffe0ac','#f8e6ff','#fffafc'];
+flecks.forEach(([x,y],j)=>speck(x,y,[1.8,2.2,1.5][j%3],colors[j%4],[.95,.85,.75][j%3]));
+[[-1,-12,8],[4,3,7]].forEach(([x,y,r])=>{const sparkle=add(layer,'g',{transform:`translate(${x+nailCenters[i]} ${y}) scale(${1/sx} ${1/sy})`});add(sparkle,'path',{d:`M 0 ${-r} Q 1.5 -1.5 ${r} 0 Q 1.5 1.5 0 ${r} Q -1.5 1.5 ${-r} 0 Q -1.5 -1.5 0 ${-r} Z`,fill:'#fffbea'});});
+}
 });
 $('selected-nail-label').textContent=selectedNail===null?'Tap a nail to paint':nailNames[selectedNail][0].toUpperCase()+nailNames[selectedNail].slice(1)+' nail selected';const count=ds.filter(Boolean).length;$('progress-label').textContent=count===5?'All five painted. Ready for your reveal!':count+' of 5 nails painted · Tap a nail to paint';$('progress-fill').style.width=count*20+'%';$('progress-track').setAttribute('aria-valuenow',count);$('finish').hidden=mode==='free'?false:state.finished;$('finish').textContent=mode==='free'?'Show my design ✧':'Finish manicure ✧';$('next').hidden=mode!=='salon'||!state.finished;syncTools();
 }
