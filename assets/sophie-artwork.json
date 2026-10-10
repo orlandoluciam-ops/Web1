@@ -1,0 +1,7 @@
+{
+  "method": "Built-in imagegen background-extraction edit; transparent alpha preserved; cropped/resized WebP game asset.",
+  "source": "upload/Sophie in her mint polka-dot shirt(1).png",
+  "editedSource": "generated_images/exec-50e3c1c4-b7c9-4491-bdd7-9086717e0539.png",
+  "asset": "assets/sophie.webp",
+  "prompt": "Use case: background-extraction. Edit target: Sophie in the attached latest image. Remove ONLY the white background and any white fringe or background glow. Produce a clean genuinely transparent RGBA cutout including all gaps between her arms and body and between legs. Do not remove white polka dots, glasses lenses, or white sneaker details. Preserve her exact face, closed-mouth smile, brown eyes, semi-rimless pink glasses, short dark brown hair and two blonde front pieces, light skin, mint green shirt with white dots, jeans, pink-and-white shoes, body proportions and standing pose exactly as shown. No redesign, expression change, clothing change, added shadow, glow, backdrop, text or extra elements. Keep entire head, hair, hands, shoulders and shoes uncropped. Preserve original framing and character size as closely as possible."
+}
